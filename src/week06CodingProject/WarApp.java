@@ -28,7 +28,7 @@ public class WarApp {
 
         // Game loop
         int round = 1;
-        int totalNumberOfRounds = 1000;
+        int totalNumberOfRounds = 1000; // To limit number of rounds to prevent an infinite loop.
         while (player1.getNumberOfCardsInHand() > 0 && player2.getNumberOfCardsInHand() > 0) {
             System.out.println("\n--- Round " + round + " ---");
 
@@ -61,7 +61,7 @@ public class WarApp {
                 int tieCount = 0;
                 while (comparison == 0 && player1.getNumberOfCardsInHand() > 0 && player2.getNumberOfCardsInHand() > 0) {
                 	 tieCount++; // Increment tie counter
-                	    if (tieCount > 10) { // Limit consecutive ties to 10
+                	    if (tieCount > 10) { // Limit consecutive ties to 10 to help eliminate infinite loop potential.
                 	        System.out.println("Too many ties! The round is a draw.");
                 	        warPile.clear(); // Discard the cards
                 	        break; // Exit the War loop
@@ -103,7 +103,7 @@ public class WarApp {
             }
 
             round++;
-            if (round >= totalNumberOfRounds) {
+            if (round >= totalNumberOfRounds) {  //Compares current round with total number of rounds allowed 
             	System.out.println("Maximum number of rounds reached. The game is a draw.");
             	break;
             }
